@@ -1,0 +1,190 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgrey;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*общий компонент туду*/
+.todo {
+  width: 700px;
+  height: 785px;
+  margin-top: 30px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: rgb(181, 179, 179);
+  border-radius: 10px;
+}
+
+/*верхняя часть общего компонента*/
+.top {
+  padding-top: 50px;
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: 270px 100px 100px 100px;
+  justify-content: center;
+}
+
+.inp {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+
+  height: 35px;
+  padding-left: 10px;
+
+  caret-color: grey;
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.btn {
+  width: 100px;
+}
+
+button {
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  /* border: 1px solid rgb(164, 164, 164); */
+}
+
+button:active {
+  background-color: rgb(164, 164, 164);
+}
+
+/*центральная часть общего компонента*/
+.middle {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgray;
+
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 10px;
+
+  width: 80%;
+  height: 520px;
+
+  display: grid;
+  row-gap: 5px;
+  grid-template-rows: 510px;
+}
+
+.first {
+  max-height: 510px;
+  overflow-y: auto; /* Включаем прокрутку */
+  scrollbar-width: thin; /* "auto" или "thin" для изменения ширины */
+  scrollbar-color: rgb(164, 164, 164) lightgray; /* Цвет ползунка и фон полосы */
+}
+
+.second {
+  /* background-color: white; */
+  justify-content: center;
+}
+
+.but {
+  height: 30px;
+  width: 80px;
+}
+
+.onenode {
+  margin: 15px;
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: 230px 40px 100px 100px;
+  justify-content: center;
+}
+
+label {
+  padding-top: 8px;
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.inputext {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+
+  height: 25px;
+  padding-left: 10px;
+
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 14px;
+
+  margin-right: 20px;
+}
+.inputedit {
+  border: none;
+  background-color: lightgray;
+}
+
+.activeinput {
+  caret-color: grey;
+}
+
+input[type="checkbox"] {
+  accent-color: grey;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  margin-top: 8px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+/*нижняя часть общего компонента*/
+.bottom {
+  margin-top: 25px;
+}
+
+.inf {
+  padding: 15px;
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.exit {
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.auth {
+  width: 500px;
+  background-color: rgb(181, 179, 179);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: auto;
+}
+
+.mid {
+  display: flex;
+  flex-direction: column;
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+}
