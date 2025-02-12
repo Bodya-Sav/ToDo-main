@@ -20,19 +20,17 @@ export default function ToDo() {
   const navigate = useNavigate();
   const [todos, setTodos] = useState([]);
   const [node, setNode] = useState("");
-  const [isAllChecked, setIsAllChecked] = useState(false); // Состояние для отслеживания состояния всех задач
-  const [showCheckedOnly, setShowCheckedOnly] = useState(false); // Новое состояние для отображения только выполненных задач
+  const [isAllChecked, setIsAllChecked] = useState(false);
+  const [showCheckedOnly, setShowCheckedOnly] = useState(false);
 
-  // Загружаем JWT-токен из localStorage при старте
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setAuthToken(token);
-      loadTodos(); // Загружаем задачи
+      loadTodos();
     }
   }, []);
 
-  // Функция загрузки задач с сервера
   const loadTodos = async () => {
     try {
       const todosFromServer = await getTodosApi();
@@ -45,7 +43,6 @@ export default function ToDo() {
   const addTodo = async () => {
     if (node.trim() !== "") {
       try {
-        // API добавит задачу и вернет объект с id, title и completed
         const newTodo = await addTodoApi(node);
         setTodos((prev) => [...prev, newTodo]);
         setNode("");
@@ -78,13 +75,11 @@ export default function ToDo() {
   const countDone = todos.filter((todo) => todo.completed).length;
   const countExist = todos.length - countDone;
 
-  // Логика для кнопки Check All
   const toggleCheckAll = async () => {
     const allChecked = todos.every((todo) => todo.completed);
     try {
       const updatedTodos = await Promise.all(
         todos.map(async (todo) => {
-          // Обновляем только те задачи, которые должны измениться
           if (todo.completed === allChecked) {
             return await updateTodoApi(todo.id, !allChecked);
           }
@@ -98,16 +93,13 @@ export default function ToDo() {
     }
   };
 
-  // Для кнопки Show Checked
   const toggleShowChecked = () => {
     setShowCheckedOnly((prev) => !prev);
   };
 
   const handleLogout = () => {
-    logoutUser(); // удаляем токен и сбрасываем заголовок
-    // Можно очистить состояние, если требуется:
+    logoutUser();
     setTodos([]);
-    // Перенаправляем пользователя на страницу логина
     navigate("/login");
   };
 
