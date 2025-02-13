@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../index.css";
 
 export default function OneNode({
+  id,
   title,
   completed,
   deleteTodo,
   toggleTodoDone,
+  updateTitle,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(title);
@@ -15,6 +17,7 @@ export default function OneNode({
   };
 
   const handleSave = () => {
+    updateTitle(id, currentTitle);
     toggleEditMode();
   };
 

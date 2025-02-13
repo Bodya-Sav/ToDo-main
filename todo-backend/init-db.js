@@ -4,22 +4,22 @@ const Todo = require("./src/models/Todo");
 
 (async () => {
   try {
-    console.log("🔄 Инициализация базы данных...");
+    console.log("Инициализация базы данных...");
 
     await sequelize.sync({ force: true });
 
-    console.log("✅ Таблицы успешно созданы!");
+    console.log("Таблицы успешно созданы!");
 
     const testUser = await User.create({
       username: "testuser",
-      password: "hashedpassword123",
+      password: "testuser",
     });
 
-    console.log(`👤 Тестовый пользователь создан: ${testUser.username}`);
+    console.log(`Тестовый пользователь создан: ${testUser.username}`);
 
     process.exit(0);
   } catch (error) {
-    console.error("❌ Ошибка инициализации базы данных:", error);
+    console.error("Ошибка инициализации базы данных:", error);
     process.exit(1);
   }
 })();

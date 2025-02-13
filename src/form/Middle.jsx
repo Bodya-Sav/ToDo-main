@@ -6,6 +6,7 @@ export default function Middle({
   deleteTodo,
   toggleTodoDone,
   showCheckedOnly,
+  updateTitle,
 }) {
   return (
     <div className="middle">
@@ -15,10 +16,12 @@ export default function Middle({
           .map((todo) => (
             <OneNode
               key={todo.id}
+              id={todo.id}
               title={todo.title}
               completed={todo.completed}
               deleteTodo={() => deleteTodo(todo.id)}
               toggleTodoDone={() => toggleTodoDone(todo.id)}
+              updateTitle={updateTitle}
             />
           ))}
       </div>

@@ -54,6 +54,28 @@ exports.updateTodo = async (req, res) => {
   }
 };
 
+exports.updateTodoTitle = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    const todo = await Todo.findOne({ where: { id, UserId: req.user.userId } });
+
+    if (!todo) {
+      return res.status(404).json({
+        error: "Задача не найдена или у вас нет прав на её изменение",
+      });
+    }
+    todo.title = title;
+
+    await todo.save();
+    res.json(todo);
+  } catch (error) {
+    console.error("Ошибка обновления задачи:", error);
+    res.status(500).json({ error: "Ошибка сервера при обновлении задачи" });
+  }
+};
+
 exports.deleteTodo = async (req, res) => {
   try {
     const { id } = req.params;

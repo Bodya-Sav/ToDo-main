@@ -14,6 +14,7 @@ import {
   addTodoApi,
   deleteTodoApi,
   logoutUser,
+  updateTodoTitle,
 } from "./api/api";
 
 export default function ToDo() {
@@ -72,6 +73,15 @@ export default function ToDo() {
     }
   };
 
+  const updateTitle = async (id, title) => {
+    try {
+      const updatedTodo = await updateTodoTitle(id, title);
+      setTodos((prev) => prev.map((t) => (t.id === id ? updatedTodo : t)));
+    } catch (error) {
+      console.error("Ошибка обновления задачи:", error);
+    }
+  };
+
   const countDone = todos.filter((todo) => todo.completed).length;
   const countExist = todos.length - countDone;
 
@@ -119,6 +129,7 @@ export default function ToDo() {
         deleteTodo={deleteTodo}
         toggleTodoDone={toggleTodoDone}
         showCheckedOnly={showCheckedOnly}
+        updateTitle={updateTitle}
       />
       <Bottom countDone={countDone} countExist={countExist} />
       <button className="exit" onClick={handleLogout}>
